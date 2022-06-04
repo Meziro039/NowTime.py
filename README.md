@@ -10,7 +10,8 @@ nowtime.now().{TYPE}("{TIMEZONE}", "{FILTER}")
 `get` : 現在時刻の取得    
 
 ### TIMEZONE(CODE)
-> UTCを基準としたオフセット順  
+> UTCを基準としたオフセット順
+
 `GMT` : グリニッジ標準時+0:00  
 `UTC` : 国際標準時+0:00  
 `ECT` : ヨーロッパ中央時間+1:00  
