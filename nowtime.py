@@ -69,9 +69,7 @@ def get(tz_set_nt=None, filter_nt=None):
         else:
             output = None
             print(":urur: value typo.")
-            return(output)
-
-        print(uruu) # DEV           
+            return(output)          
 
         # 分の処理と時の加減算
         if minute > 59:
