@@ -4,10 +4,7 @@ NowTime.pyはタイムゾーンに応じた時間を出力してくれるモジ�
 ## 使い方
 
 ### 基本形式
-nowtime.now().{TYPE}("{TIMEZONE}", "{FILTER}")  
-
-### TYPE
-`get` : 現在時刻の取得    
+`nowtime.get("{TIMEZONE}", "{FILTER}")`  
 
 ### TIMEZONE(CODE)
 > UTCを基準としたオフセット順
@@ -45,9 +42,6 @@ nowtime.now().{TYPE}("{TIMEZONE}", "{FILTER}")
 `BET` : ブラジル東部時間-3:00  
 `CAT` : 中央アフリカ時間-1:00  
 
-### TIMEZONE(NAME)
-None  
-
 ### FILTER
 `year` : 年(西暦)  
 `month` : 月  
@@ -61,8 +55,8 @@ None
 > Program
 import nowtime
 
-nt = nowtime.now()
-print(nt.get("JST", "Hour"))
+nt = nowtime.get
+print(nt("JST", "hour"))
 
 > Output  
 21 // 現在時刻(UTC)は12時とする。
@@ -71,39 +65,35 @@ print(nt.get("JST", "Hour"))
 ## その他
 
 ### エラーの挙動
-数値や設定値が正しくない、または対応していない場合`int`型で`9999`を返答します。  
+数値や設定値が正しくない、または対応していない場合`None`を返答します。  
 
 ### エラーの文章
 `Error: Incorrect filter value.` : {FILTER}に与えられた値が間違っています。  
 `Error: Incorrect month value.` : 月に与えられた値が間違っています。  
-`Error: Incorrect timezone values.` : タイムゾーンの設定値が間違っています。  
+`Error: Incorrect timezone value.` : タイムゾーンの設定値が間違っています。  
 `Error: :urur: value typo.` : うるう年の判定値が間違っています。  
 `Error: :offset_which: value typo.` : オフセットの加減算判定値が間違っています。  
 
 ## 更新履歴
 v0.0.1 初版 2022-06-03
 - 不完全な実装
-- JSTのみ対応。
+- JSTのみ対応
 
 v0.0.2 改版 2022-06-04
-- 不完全な動作確認
+- 不完全な動作検証
 - 誤った処理の修正
 - 足りなかった処理の追加
 - コードの書き直し
 - タイムゾーン(コード)一式に対応
 
+v.0.1.0 改版 2022-06-05
+全体的な処理の修正と時空が歪む問題を修正  
+- 簡易的な動作検証
+- 誤った処理の修正
+- Class処理を削除
+- 未入力時にエラーを返答
+- エラー出力値を`9999`ではなく`None`に変更
+
 ## 感謝
 タイムゾーン(コード)の情報  
-[publib.boulder.ibm.com](https://publib.boulder.ibm.com/tividd/td/TWS/SC32-1274-02/ja_JA/HTML/SRF_mst269.htm)  
-
-タイムゾーン(ネーム)の情報  
-[en.wikipedia.org](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)  
-
-## 実装予定
-### タイムゾーン(ネーム)に対応
-Asia/Tokyoみたいな形式にも対応したい。  
-
-### ~~他のタイムゾーンと地域の入力に対応~~
-~~GMTやJSTみたいな形式とAsia/Tokyoみたいな形式どっちにも対応したい。~~
-
-~~なんか作ってるとき同じようなものを見つけてしまい何とも言えない気分になった。~~
+[publib.boulder.ibm.com](https://publib.boulder.ibm.com/tividd/td/TWS/SC32-1274-02/ja_JA/HTML/SRF_mst269.htm)    

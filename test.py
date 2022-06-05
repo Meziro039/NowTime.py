@@ -1,16 +1,14 @@
 import nowtime
+import time
 
-set = nowtime.now().get("jst", "hour")
-print(set)
-
-'''
 while True:
-    nt_y = nowtime.get("jst", "year")
-    nt_mo = nowtime.get("jst", "month")
-    mt_d = nowtime.get("jst", "day")
-    nt_h = nowtime.get("jst", "hour")
-    nt_m = nowtime.get("jst", "minute")
-    nt_s = nowtime.get("jst", "second")
-    print(str(nt_y) + "年" + str(nt_mo) + "月" + str(mt_d) + "日" + str(nt_h) + "時" + str(nt_m) + "分" + str(nt_s) + "秒")
+    n = nowtime.get
+    nt_year = n("jst", "year")
+    nt_month = n("jst", "month")
+    nt_day = n("jst", "day")
+    nt_hour = n("jst", "hour")
+    nt_min = n("jst", "minute")
+    nt_sec = n("jst", "second")
+
+    print("Time:" + str(nt_year) + "年" + str(nt_month) + "月" + str(nt_day) + "日" + str(nt_hour) + "時" + str(nt_min) + "分" + str(nt_sec) + "秒")
     time.sleep(1)
-'''
